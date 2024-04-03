@@ -1,0 +1,17 @@
+
+POST http://localhost:3000/app-user/ HTTP/1.1
+content-type: application/json
+
+{
+    "full_name": "Luis Daniel",
+    "user_icom_name": "user",
+    "userName": "Prueba1",
+    "password": "PassPrueba2024!",
+    "passwordConfirm": "PassPrueba2024!",
+    "email": "prueba15@gmail.com",
+    "person_id": 1,
+    "created_by": 1,
+    "updated_by": 1
+}
+
+###
