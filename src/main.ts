@@ -17,6 +17,7 @@ async function bootstrap() {
     .setTitle('Wallet Itopia')
     .setDescription('Wallet Itopia System')
     .setVersion('1.0')
+    .addTag('Login')
     .addTag('User')
     .addTag('Category')
     .build();

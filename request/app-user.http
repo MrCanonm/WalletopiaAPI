@@ -8,7 +8,7 @@ content-type: application/json
     "userName": "Prueba1",
     "password": "PassPrueba2024!",
     "passwordConfirm": "PassPrueba2024!",
-    "email": "prueba15@gmail.com",
+    "email": "prueba1@gmail.com",
     "person_id": 1,
     "created_by": 1,
     "updated_by": 1
