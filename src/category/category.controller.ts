@@ -7,7 +7,6 @@ import {
   Param,
   Delete,
   UseGuards,
-  Request,
 } from '@nestjs/common';
 import { CategoryService } from './category.service';
 import { CreateCategoryDto } from './dto/create-category.dto';
@@ -43,17 +42,18 @@ export class CategoryController {
     return this.categoryService.findAll(user.access_name);
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.categoryService.findOne(+id);
-  }
-
+  @UseGuards(JwtAuthGuard)
   @Patch(':id')
   update(
     @Param('id') id: string,
     @Body() updateCategoryDto: UpdateCategoryDto,
+    @User() user,
   ) {
-    return this.categoryService.update(+id, updateCategoryDto);
+    return this.categoryService.update(
+      +id,
+      updateCategoryDto,
+      user.access_name,
+    );
   }
 
   @Delete(':id')

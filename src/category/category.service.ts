@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -11,6 +11,8 @@ export class CategoryService {
     @InjectRepository(Category)
     private readonly categoryRepo: Repository<Category>,
   ) {}
+  resourceUsing = 'Categoria';
+
   create(createCategoryDto: CreateCategoryDto, created_by: string) {
     const newCategoria = this.categoryRepo.create({
       ...createCategoryDto,
@@ -26,15 +28,31 @@ export class CategoryService {
     });
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} category`;
+  async update(
+    id: number,
+    updateCategoryDto: UpdateCategoryDto,
+    created_by: string,
+  ) {
+    const existingItem = await this.categoryRepo.findOne({
+      where: { id: id, isDefault: false, created_by },
+    });
+    if (!existingItem) {
+      throw new NotFoundException(`No existe la ${this.resourceUsing}`);
+    }
+    Object.assign(existingItem, {
+      ...updateCategoryDto,
+    });
+    return await this.categoryRepo.save(existingItem);
   }
 
-  update(id: number, updateCategoryDto: UpdateCategoryDto) {
-    return `This action updates a #${id} category`;
-  }
+  async remove(id: number) {
+    const existingItem = await this.categoryRepo.findOne({ where: { id: id } });
 
-  remove(id: number) {
-    return `This action removes a #${id} category`;
+    if (!existingItem) {
+      throw new NotFoundException(`No se encontro la ${this.resourceUsing}`);
+    }
+
+    existingItem.deleted = true;
+    await this.categoryRepo.save(existingItem);
   }
 }
