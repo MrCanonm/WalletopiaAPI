@@ -1,0 +1,20 @@
+
+// Create Category
+POST http://localhost:3000/category/ HTTP/1.1
+content-type: application/json
+
+{
+    "category_name": "videojuegos",
+    "icon_name": "car",
+    "isDefault": false,
+    "person_id": 1,
+    "updated_by": 1
+}
+
+###
+
+//Get Category 
+GET  http://localhost:3000/category/ HTTP/1.1
+content-type: application/json
+
+###

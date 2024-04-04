@@ -56,7 +56,7 @@ export class AuthService {
     const cookieOptions = {
       expires: cookieExpiration,
       httpOnly: true,
-      secure: this.configService.get<string>('NODE_ENV') === 'production',
+      secure: this.configService.get<string>('NODE_ENV') === 'development',
       sameSite: 'strict' as 'strict' | 'lax' | 'none',
       path: '/',
     };

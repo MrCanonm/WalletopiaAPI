@@ -36,7 +36,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     const userResponse = {
       ...user,
       access_hash: undefined,
-      access_name: undefined,
+      //access_name: undefined,
       hash: undefined,
       person: undefined,
       id: undefined,

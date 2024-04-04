@@ -15,7 +15,7 @@ export class AppUser extends BaseFullEntity {
   full_name: string;
 
   @Column('varchar', { length: 95, nullable: false })
-  user_icom_name: string;
+  user_icon_name: string;
 
   @Column('varchar', { length: 95, nullable: false })
   access_name: string;
