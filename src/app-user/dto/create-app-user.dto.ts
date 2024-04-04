@@ -14,7 +14,7 @@ export class CreateAppUserDto {
   })
   @IsString()
   @IsNotEmpty()
-  user_icom_name: string;
+  user_icon_name: string;
 
   @ApiProperty({
     example: 'Prueba1',
