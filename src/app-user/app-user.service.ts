@@ -36,8 +36,10 @@ export class AppUserService {
 
     const userToRegister = plainToClass(AppUser, {
       ...createAppUserDto,
-      access_name: createAppUserDto.userName,
+      access_name: userName,
       access_hash: hashedPassword,
+      created_by: userName,
+      updated_by: userName,
     });
 
     await this.appUserRepo.save(userToRegister);

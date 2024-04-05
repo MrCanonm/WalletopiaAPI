@@ -6,8 +6,7 @@ content-type: application/json
 {
     "category_name": "ocio",
     "icon_name": "car",
-    "isDefault": false,
-    "updated_by": 1
+    "isDefault": false
 }
 
 ###

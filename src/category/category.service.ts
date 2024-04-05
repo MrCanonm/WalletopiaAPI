@@ -13,10 +13,15 @@ export class CategoryService {
   ) {}
   resourceUsing = 'Categoria';
 
-  create(createCategoryDto: CreateCategoryDto, created_by: string) {
+  create(
+    createCategoryDto: CreateCategoryDto,
+    created_by: string,
+    updated_by: string,
+  ) {
     const newCategoria = this.categoryRepo.create({
       ...createCategoryDto,
       created_by,
+      updated_by,
     });
 
     return this.categoryRepo.save(newCategoria);
